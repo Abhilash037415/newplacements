@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "C:\Users\grggg\Documents\placements\placement-prediction\backend\services\interview_service.py", line 107, in generate
+    client = gemini_service.genai.Client(vertexai=True, location="us-central1")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\grggg\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\genai\client.py", line 426, in __init__
+    self._api_client = self._get_api_client(
+                       ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\grggg\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\genai\client.py", line 474, in _get_api_client
+    return BaseApiClient(
+           ^^^^^^^^^^^^^^
+  File "C:\Users\grggg\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\genai\_api_client.py", line 673, in __init__
+    credentials, self.project = load_auth(project=None)
+                                ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\grggg\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\genai\_api_client.py", line 191, in load_auth
+    credentials, loaded_project_id = google.auth.default(  # type: ignore[no-untyped-call]
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\grggg\AppData\Local\Programs\Python\Python311\Lib\site-packages\google\auth\_default.py", line 752, in default
+    raise exceptions.DefaultCredentialsError(_CLOUD_SDK_MISSING_CREDENTIALS)
+google.auth.exceptions.DefaultCredentialsError: Your default credentials were not found. To set up Application Default Credentials, see https://cloud.google.com/docs/authentication/external/set-up-adc for more information.

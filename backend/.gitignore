@@ -1,0 +1,5 @@
+# Ignore Google Cloud service account key
+backend/ai-mock-interview-490114-2b9337974116.json
+
+# Ignore environment variables
+.env

@@ -1,0 +1,59 @@
+﻿
+> frontned@0.0.0 lint
+> eslint .
+
+
+C:\Users\grggg\Documents\placements\placement-prediction\frontend\src\components\DSAAnalysis.jsx
+  98:5  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+   96 |   useEffect(() => {
+   97 |     if (!lcUsername) return;
+>  98 |     setLoading(true);
+      |     ^^^^^^^^^^ Avoid calling setState() directly within an effect
+   99 |     setError("");
+  100 |     getDsaAnalysis(lcUsername)
+  101 |       .then((res) => setData(res.data))  react-hooks/set-state-in-effect
+
+C:\Users\grggg\Documents\placements\placement-prediction\frontend\src\components\Dashboard.jsx
+  19:43  error    'onLogout' is defined but never used                                                                             no-unused-vars
+  43:40  warning  React Hook useEffect has a missing dependency: 'fetchProfile'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\grggg\Documents\placements\placement-prediction\frontend\src\components\MockInterviewSession.jsx
+  157:11  error    Error: Cannot access variable before it is declared
+
+`handleStreamEvent` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.
+
+  155 |             duration: config.duration,
+  156 |           },
+> 157 |           handleStreamEvent,
+      |           ^^^^^^^^^^^^^^^^^ `handleStreamEvent` accessed before it is declared
+  158 |         );
+  159 |       } catch (err) {
+  160 |         setError(err?.message || "Unable to initialize interview session.");
+
+  186 |   }, []);
+  187 |
+> 188 |   const handleStreamEvent = ({ event, data }) => {
+      |   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 189 |     if (event === "session") {
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 190 |       setSessionId(data.session_id);
+      ΓÇª
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 273 |     }
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 274 |   };
+      | ^^^^^ `handleStreamEvent` is declared here
+  275 |
+  276 |   const playAudioPayload = (audioBase64) => {
+  277 |     if (!audioBase64) {  react-hooks/immutability
+  186:6   warning  React Hook useEffect has missing dependencies: 'config.duration', 'config.experienceLevel', 'config.role', and 'handleStreamEvent'. Either include them or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               react-hooks/exhaustive-deps
+
+Γ£û 5 problems (3 errors, 2 warnings)
+
