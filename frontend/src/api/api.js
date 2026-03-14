@@ -1,13 +1,13 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://c607-117-192-9-245.ngrok-free.app//api",
+  baseURL: "https://c607-117-192-9-245.ngrok-free.app//api",
   headers: { "Content-Type": "application/json" },
 });
 
 const INTERVIEW_BASE_URL =
-  "http://c607-117-192-9-245.ngrok-free.app//interview";
-const ROOT_BASE_URL = "http://c607-117-192-9-245.ngrok-free.app/";
+  "https://c607-117-192-9-245.ngrok-free.app//interview";
+const ROOT_BASE_URL = "https://c607-117-192-9-245.ngrok-free.app/";
 
 export const registerUser = (data) => API.post("/register", data);
 export const loginUser = (data) => API.post("/login", data);
@@ -39,7 +39,7 @@ export const uploadResume = (userId, file) => {
   formData.append("user_id", userId);
   formData.append("resume", file);
   return axios.post(
-    "http://c607-117-192-9-245.ngrok-free.app//api/resume/upload",
+    "https://c607-117-192-9-245.ngrok-free.app//api/resume/upload",
     formData,
     {
       headers: { "Content-Type": "multipart/form-data" },
