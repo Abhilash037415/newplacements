@@ -1,12 +1,13 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "http://c607-117-192-9-245.ngrok-free.app//api",
   headers: { "Content-Type": "application/json" },
 });
 
-const INTERVIEW_BASE_URL = "http://localhost:5000/interview";
-const ROOT_BASE_URL = "http://localhost:5000";
+const INTERVIEW_BASE_URL =
+  "http://c607-117-192-9-245.ngrok-free.app//interview";
+const ROOT_BASE_URL = "http://c607-117-192-9-245.ngrok-free.app/";
 
 export const registerUser = (data) => API.post("/register", data);
 export const loginUser = (data) => API.post("/login", data);
@@ -30,15 +31,20 @@ export const adminLogin = (data) => API.post("/admin/login", data);
 export const getAdminStudents = () => API.get("/admin/students");
 export const getAdminLeaderboard = () => API.get("/admin/leaderboard");
 export const getAnnouncements = () => API.get("/announcements");
-export const createAnnouncement = (data) => API.post("/admin/announcements", data);
+export const createAnnouncement = (data) =>
+  API.post("/admin/announcements", data);
 
 export const uploadResume = (userId, file) => {
   const formData = new FormData();
   formData.append("user_id", userId);
   formData.append("resume", file);
-  return axios.post("http://localhost:5000/api/resume/upload", formData, {
-    headers: { "Content-Type": "multipart/form-data" },
-  });
+  return axios.post(
+    "http://c607-117-192-9-245.ngrok-free.app//api/resume/upload",
+    formData,
+    {
+      headers: { "Content-Type": "multipart/form-data" },
+    },
+  );
 };
 
 const parseSseBlock = (block) => {
